@@ -1,7 +1,7 @@
 #include "Polynomial.h"
 #include <iostream>
 #include <cstdlib>
-#include <windows.h>
+//#include <windows.h>
 
 
 using namespace std;
@@ -11,6 +11,7 @@ void displayMenu(int *);
 
 int main()
 {
+    /*
     //font and system color --->>>
     system("Color 8a");
     CONSOLE_FONT_INFOEX cfi;
@@ -23,6 +24,7 @@ int main()
     cfi.FaceName, "forte";
     SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
     //--->>>
+    */
 
     int choice, *choicePtr = &choice;
     bool go = true;

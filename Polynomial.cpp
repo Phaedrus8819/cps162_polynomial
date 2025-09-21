@@ -98,41 +98,48 @@ void Polynomial::printSum(const Polynomial &a, const Polynomial &b)
 {
     ListNode *p = a.head;
     ListNode *q = b.head;
+    int coefficient, exponent;
+
+    bool first = true;
 
     while (p||q)
     {
-        if (!q )
+        if (!q)
         {
-            if (p->value.coeff >= 0 && p != a.head)
-                cout << "+";
-            cout << p -> value.coeff << "x^" << p -> value.exp; 
+            coefficient = p->value.coeff;
+            exponent = p->value.exp;
             p=p->next;
         } else if (!p)
         {
-            if (q->value.coeff >= 0 && q != a.head)
-                cout << "+";
-            cout << q -> value.coeff << "x^" << q -> value.exp; 
+            coefficient = q->value.coeff;
+            exponent = q->value.exp;
             q=q->next;
         } else if (p->value.exp > q->value.exp)
         {
-            if (p->value.coeff >= 0 && p != a.head)
-                cout << "+";
-            cout << p -> value.coeff << "x^" << p -> value.exp; 
+            coefficient = p->value.coeff;
+            exponent = p->value.exp;
             p=p->next;
         } else if (q->value.exp > p->value.exp)
         {
-            if (q->value.coeff >= 0 && q != a.head)
-                cout << "+";
-            cout << q -> value.coeff << "x^" << q -> value.exp; 
+            coefficient = q->value.coeff;
+            exponent = q->value.exp;
             q=q->next;
         } else {
-            int c = p->value.coeff + q->value.coeff;
-            if (c >= 0 && p != a.head && q != b.head)
-                cout << "+";
-            cout << c << "x^" << p->value.exp;
+            coefficient = p->value.coeff + q->value.coeff;
+            exponent = p->value.exp;
             p=p->next;
             q=q->next;
         }
+        if (first)
+            cout << coefficient << "x^" << exponent;
+        else
+        {
+            if (coefficient >= 0)
+                cout << "+" << coefficient << "x^" << exponent;
+            else
+                cout << coefficient << exponent;
+        }
+        first = false;
     }
     cout << endl;
 }
@@ -142,41 +149,48 @@ void Polynomial::printDiff(const Polynomial &a, const Polynomial &b)
 {
     ListNode *p = a.head;
     ListNode *q = b.head;
+    int coefficient, exponent;
+
+    bool first = true;
 
     while (p||q)
     {
-        if (!q )
+        if (!q)
         {
-            if (p->value.coeff >= 0 && p != a.head)
-                cout << "+";
-            cout << p -> value.coeff << "x^" << p -> value.exp; 
+            coefficient = p->value.coeff;
+            exponent = p->value.exp;
             p=p->next;
         } else if (!p)
         {
-            if (q->value.coeff >= 0 && q != a.head)
-                cout << "+";
-            cout << q -> value.coeff << "x^" << q -> value.exp; 
+            coefficient = q->value.coeff;
+            exponent = q->value.exp;
             q=q->next;
         } else if (p->value.exp > q->value.exp)
         {
-            if (p->value.coeff >= 0 && p != a.head)
-                cout << "+";
-            cout << p -> value.coeff << "x^" << p -> value.exp; 
+            coefficient = p->value.coeff;
+            exponent = p->value.exp;
             p=p->next;
         } else if (q->value.exp > p->value.exp)
         {
-            if (q->value.coeff >= 0 && q != a.head)
-                cout << "+";
-            cout << q -> value.coeff << "x^" << q -> value.exp; 
+            coefficient = q->value.coeff;
+            exponent = q->value.exp;
             q=q->next;
         } else {
-            int c = p->value.coeff - q->value.coeff;
-            if (c >= 0 && p != a.head && q != b.head)
-                cout << "+";
-            cout << c << "x^" << p->value.exp;
+            coefficient = p->value.coeff - q->value.coeff;
+            exponent = p->value.exp;
             p=p->next;
             q=q->next;
         }
+        if (first)
+            cout << coefficient << "x^" << exponent;
+        else
+        {
+            if (coefficient >= 0)
+                cout << "+" << coefficient << "x^" << exponent;
+            else
+                cout << coefficient << exponent;
+        }
+        first = false;
     }
     cout << endl;
 }
